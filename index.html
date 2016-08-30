@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<style>
+			table {
+				border-collase: collapse;
+				border: 2px black solid;
+				font: 12px sans-serif;
+				width: 100%;
+			}
+
+			td {
+				border: 1px black solid;
+				padding: 5px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 align="center">Movie Ratings</h1>
+		<table id="movie_table">
+			<tr>
+				<td>name</td>
+				<td>year</td>
+				<td>image</td>
+				<td>rating</td>
+				<td>datewatched</td>
+			</tr>
+			<tr>
+				<td>Moneyball</td>
+				<td>2011</td>
+				<td><img src="https://upload.wikimedia.org/wikipedia/en/2/2e/Moneyball_Poster.jpg"></td>
+				<td>10</td>
+				<td>2013-10-11</td>
+			</tr>
+			<tr>
+				<td>Interstellar</td>
+				<td>2014</td>
+				<td><img src="https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"></td>
+				<td>10</td>
+				<td>2014-11-27</td>
+			</tr>
+		</table>
+		<input id="add_movie" type="button" value="Add Movie" onclick="addMovie()"/>
+        <script>
+        /*
+
+        	$(document).ready(function() {
+			    $.ajax({
+			        type: "GET",
+			        url: "movies.csv",
+			        dataType: "text",
+			        success: function(data) {processData(data);}
+			     });
+			});
+
+        	function processCSV(text) {
+				var data = text
+				var lines = data.split("\n"),
+				    output = [],
+				    i;
+				for (i = 0; i < lines.length; i++)
+				    output.push("<tr><td>"
+				                + lines[i].slice(0,-1).split(",").join("</td><td>")
+				                + "</td></tr>");
+				output = "<table>" + output.join("") + "</table>";
+				output += "<p>HARAMBE2</p>";
+				$("body").apppend(output);
+			}
+		*/
+			function addMovie() {
+				var movie_name = prompt("Movie Name?");
+				var movie_year = prompt("What year was it released in?");
+				var movie_img = prompt("Link to movie image?");
+				var movie_rating = prompt("Rating?");
+				var date = prompt("When did you watch it?");
+
+				var table = document.getElementById("movie_table");
+				var row = table.insertRow(-1);
+
+				var cell1 = row.insertCell(0);
+				cell1.innerHTML = movie_name;
+				var cell2 = row.insertCell(1);
+				cell2.innerHTML = movie_year;
+				var cell3 = row.insertCell(2);
+				cell3.innerHTML = "<img src=\"" + movie_img + "\">";
+				var cell4 = row.insertCell(3);
+				cell4.innerHTML = movie_rating;
+				var cell5 = row.insertCell(4);
+				cell5.innerHTML = date;
+			}
+
+			function loadMovies() {
+				
+			}
+        </script>
+    </body>
+</html>
