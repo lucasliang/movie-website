@@ -61,12 +61,16 @@
 
 				if(localStorage.movies)
 				{
-					localStorage.movies = JSON.stringify(JSON.parse(localStorage.movies).push(movie));
+					var list = JSON.parse(localStorage.movies);
+					list.push(movie);
+					localStorage.movies = JSON.stringify(list);
 					addMovie(movie);
 				}
 				else
 				{
-					localStorage.movies = JSON.stringify([movie]);
+					var array = [];
+					array.push(movie);
+					localStorage.movies = JSON.stringify(array);
 					addMovie(movie);
 				}
 			}
